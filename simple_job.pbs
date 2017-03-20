@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#PBS -N {name}
+#PBS -l nodes=1:ppn=1,mem=20gb,walltime=24:00:00
+#PBS -m e
+#PBS -j oe
+#PBS -r n
+
+# -m e == email when done
+# -j oe == one logfile for out and err
+# -r n == not re-runnable
+
+cd $PBS_O_WORKDIR   # directory where script was qsubbed
+
+module load {name}/{version}
+
+{commands, e.g. Rscript script.R arg1 ...}
